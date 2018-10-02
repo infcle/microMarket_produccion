@@ -1,4 +1,5 @@
 <?php 
+	//Array de menus
 	//Ruta principal
 	//define('ROOT', 'http://www.supsi.bo/');
 	define('ROOT', 'http://localhost/microMarket_produccion/');
