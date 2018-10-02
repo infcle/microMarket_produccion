@@ -1,6 +1,7 @@
 <?php 
 	//Ruta principal
-	define('ROOT', 'http://www.supsi.bo/');
+	//define('ROOT', 'http://www.supsi.bo/');
+	define('ROOT', 'http://localhost/microMarket_produccion/');
 	define('ROOT_CONTROLLER', ROOT.'app/controller/');
 	$menus = array(
 		'INICIO'=>array(

@@ -25,3 +25,6 @@
 
 <!-- script chosen -->
 <script src="<?php echo ROOT; ?>resources/assets/js/chosen.jquery.min.js" type="text/javascript"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="<?php echo ROOT; ?>resources/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
