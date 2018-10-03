@@ -10,7 +10,7 @@
 	                    <label class="control-label col-md-3">Seleccione Fecha para consulta de la venta :</label>
 	                    <div class="col-md-3 col-xs-11">
 	                        <div data-date-viewmode="date" data-date="<?php echo date('d/m/Y'); ?>"  class="input-append date cFecha">
-                                <input type="text" readonly="" value="" size="16" class="form-control" name="fechaConsulta" id="fechaConsulta">
+                                <input type="text" readonly="" value="" size="16" class="form-control" name="fechaConsultaA" id="fechaConsultaA">
                                 <span class="input-group-btn add-on">
                                     <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
                             	</span>
@@ -19,7 +19,7 @@
                         <label class="control-label col-md-2">a</label>
                         <div class="col-md-3 col-xs-11">
 	                        <div data-date-viewmode="date" data-date="<?php echo date('d/m/Y'); ?>"  class="input-append date cFecha">
-                                <input type="text" readonly="" value="" size="16" class="form-control" name="fechaConsulta" id="fechaConsulta">
+                                <input type="text" readonly="" value="" size="16" class="form-control" name="fechaConsultaB" id="fechaConsultaB">
                                 <span class="input-group-btn add-on">
                                     <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
                             	</span>
@@ -46,7 +46,8 @@
 		});
 	});
 	function verRep(){
-		var miFecha=$('#fechaConsulta').val();
-		$('#cuerpo').html('<embed src="<?php echo ROOT_CONTROLLER?>reporte/pdf_reporte_entrega.php?fecha='+miFecha+' width="100%" height="600"></embed>');
+        var miFechaA=$('#fechaConsultaA').val();
+        var miFechaB=$('#fechaConsultaB').val();
+		$('#cuerpo').html('<embed src="<?php echo ROOT_CONTROLLER?>reporte/pdf_reporte_entrega.php?fecha='+miFechaA+' width="100%" height="600"></embed>');
     }
 </script>
