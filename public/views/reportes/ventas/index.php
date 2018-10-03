@@ -27,7 +27,7 @@
                         </div>
                         
 	                    <div class="col-sm-offset-1 col-md-3">
-					    	<button type="button" class="btn btn-success" data-toggle="modal" onclick="verRep()" data-target="#modalImprimir">Mostrar Reporte <span class="fa fa-print"></span></button>
+					    	<button type="button" class="btn btn-success" data-toggle="modal" onclick="verRep()" data-target="#modalImprimir">Mostrar Reporte Ventas <span class="fa fa-print"></span></button>
 					    </div>
 	                </div>
 	            </form>
@@ -39,7 +39,7 @@
 <script>
 	$(document).ready(function() {
 		$('.cFecha').datepicker({
-			format: 'dd/mm/yyyy'
+			format: 'dd-mm-yyyy'
 		})
 		.on('changeDate', function(ev){
 			$('.cFecha').datepicker('hide');
@@ -48,6 +48,7 @@
 	function verRep(){
         var miFechaA=$('#fechaConsultaA').val();
         var miFechaB=$('#fechaConsultaB').val();
-		$('#cuerpo').html('<embed src="<?php echo ROOT_CONTROLLER?>reporte/pdf_reporte_entrega.php?fecha='+miFechaA+' width="100%" height="600"></embed>');
+        console.log("Las Fechas son A: "+miFechaA+" y B:"+miFechaB);
+		$('#cuerpo').html('<embed src="<?php echo ROOT_CONTROLLER?>reporte/pdf_reporte_venta.php?fecha_a='+miFechaA+'&fecha_b='+miFechaB+'" width="100%" height="600"></embed>');
     }
 </script>

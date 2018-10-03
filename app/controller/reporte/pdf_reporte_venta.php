@@ -3,6 +3,14 @@ require_once('../../config/db.php');
 require_once('../../config/conexion.php');
 require_once('../../librarys/tcpdf/examples/tcpdf_include.php');
 
+// Resivimos las variables de fechas
+
+$dateA = date('Y-m-d',strtotime(trim($_REQUEST["fecha_a"])));
+$dateB = date('Y-m-d',strtotime(trim($_REQUEST["fecha_b"])));
+
+
+
+
 // create new PDF document
 $dimen = array(216,280);
 // $pdf = new TCPDF('P','mm','A4',true, 'UTF-8', false);
@@ -51,9 +59,9 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 //Declaramos las columnas
 $posxini = PDF_MARGIN_LEFT+1;
-$posxnro = 50;
-$posxci  = 90;
-$posxben = 170;
+$posxnro = 100;
+$posxci  = 130;
+$posxben = 160;
 $posxfin = 200;
 // ---------------------------------------------------------
 // set default font subsetting mode
@@ -80,34 +88,33 @@ $tab_top = 40;
 $tab_height = 160;
 $pdf->SetFillColor(255, 255, 127);
 
-cabezeraReporte($pdf);
+cabezeraReporte($pdf,$dateA,$dateB);
 
 //$this->printRect($pdf,$this->marge_gauche, $tab_top, $this->page_largeur-$this->marge_gauche-$this->marge_droite, $tab_height, $hidetop, $hidebottom);
 $pdf->Rect(20, $tab_top, 175, $tab_top + $tab_height+10, 'D');
 
 if (!empty($hidetop)){    
     $pdf->SetXY($posxini + 2, $tab_top+3);
-    $pdf->MultiCell($posxnro-$posxini-1,7, "Nro Recibo",'','C',0, 0, '', '', true);
+    $pdf->MultiCell($posxnro-$posxini-1,7, "Nombre del Producto",'','C',0, 0, '', '', true);
     $pdf->line($posxnro-1, $tab_top, $posxnro-1, $tab_top + $tab_height + 50);
     
     $pdf->SetXY($posxnro-1, $tab_top+3);
-    $pdf->MultiCell($posxci-$posxnro-1,2, "CI",'','C');
+    $pdf->MultiCell($posxci-$posxnro-1,2, "Precio",'','C');
     $pdf->line($posxci-1, $tab_top, $posxci-1, $tab_top + $tab_height+ 50);
 
-    $pdf->SetXY($posxci-1, $tab_top+3);
-    $pdf->MultiCell($posxben-$posxci-1,2, "Beneficiaria",'','C');
+    $pdf->SetXY($posxci-1, $tab_top+1);
+    $pdf->MultiCell($posxben-$posxci-1,2, "Peso o Cantidad",'','C');
     $pdf->line($posxben-1, $tab_top, $posxben-1, $tab_top + $tab_height+ 50);
 
     $pdf->SetXY($posxben-1, $tab_top+3);
-    $pdf->MultiCell($posxfin-$posxben-1,2, "Venta Total",'','C');
+    $pdf->MultiCell($posxfin-$posxben-1,2, "Total venta",'','C');
      
     //$pdf->line($posxci-1, $tab_top, $posxci-1, $tab_top + $tab_height+ 50);
     $pdf->line(20, $tab_top+10, 216-21, $tab_top+10);
 }
 
     
-    $sql = "call reporte_dia()";
-    
+    $sql = "call detalleVentasPorRangoFechas('{$dateA}','{$dateB}')";    
     //echo $sql;
     $res=$con->query($sql);
     $conca = "";
@@ -119,13 +126,13 @@ if (!empty($hidetop)){
 
         $pdf->Rect(20, $tab_top, 175, $tab_top + $tab_height+10, 'D');
         $pdf->SetXY($posxini+4, $curY);
-        $pdf->MultiCell($posxnro-$posxini-1, 1,$fila['nro_recibo'] , 0, 'L',0);
+        $pdf->MultiCell($posxnro-$posxini-1, 1,$fila['nombre'] , 0, 'L',0);
         
         $pdf->SetXY($posxnro, $curY);
-        $pdf->MultiCell($posxci-$posxnro-1, 1,$fila['ci'] , 0, 'L',0);
+        $pdf->MultiCell($posxci-$posxnro-1, 1,$fila['precio'] , 0, 'R',0);
         
         $pdf->SetXY($posxci, $curY);
-        $pdf->MultiCell($posxben-$posxci-1, 1,$fila['nombre'] , 0, 'L',0);
+        $pdf->MultiCell($posxben-$posxci-1, 1,$fila['peso_cantidad'] , 0, 'C',0);
         
         $pdf->SetXY($posxben, $curY);
         $pdf->MultiCell($posxfin-8-$posxben-1, 1,$fila['preciototal'] , 0, 'R',0);
@@ -144,52 +151,52 @@ if (!empty($hidetop)){
             $nexY = 30;
             if (!empty($hidetop)){    
                 $pdf->SetXY($posxini + 2, $tab_top+3);
-                $pdf->MultiCell($posxnro-$posxini-1,7, "Nro Recibo",'','C',0, 0, '', '', true);
+                $pdf->MultiCell($posxnro-$posxini-1,7, "Nombre del Producto",'','C',0, 0, '', '', true);
                 $pdf->line($posxnro-1, $tab_top, $posxnro-1, $tab_top + $tab_height + 50);
                 
                 $pdf->SetXY($posxnro-1, $tab_top+3);
-                $pdf->MultiCell($posxci-$posxnro-1,2, "CI",'','C');
+                $pdf->MultiCell($posxci-$posxnro-1,2, "Precio",'','C');
                 $pdf->line($posxci-1, $tab_top, $posxci-1, $tab_top + $tab_height+ 50);
             
                 $pdf->SetXY($posxci-1, $tab_top+3);
-                $pdf->MultiCell($posxben-$posxci-1,2, "Beneficiaria",'','C');
+                $pdf->MultiCell($posxben-$posxci-1,2, "Peso o Cantidad",'','C');
                 $pdf->line($posxben-1, $tab_top, $posxben-1, $tab_top + $tab_height+ 50);
             
                 $pdf->SetXY($posxben-1, $tab_top+3);
-                $pdf->MultiCell($posxfin-$posxben-1,2, "Venta Total",'','C');
+                $pdf->MultiCell($posxfin-$posxben-1,2, "Total venta",'','C');
                  
                 //$pdf->line($posxci-1, $tab_top, $posxci-1, $tab_top + $tab_height+ 50);
                 $pdf->line(20, $tab_top+10, 216-21, $tab_top+10);
             }
             
         }else {
-            cabezeraReporte($pdf);
+            cabezeraReporte($pdf,$dateA,$dateB);
         }
 
         
     }
 // ---------------------------------------------------------
 
-function cabezeraReporte($pdf){
+function cabezeraReporte($pdf,$dateA,$dateB){
 
     $pdf->SetXY(20, 10);
     $pdf->Image('../../../resources/assets/images/logopas.png', '', '', 30, 30, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
-    
+        
     $posxini = PDF_MARGIN_LEFT+1;
-    $posxnro = 50;
-    $posxci  = 90;
-    $posxben = 170;
+    $posxnro = 100;
+    $posxci  = 130;
+    $posxben = 160;
     $posxfin = 200;
     
     $pdf->SetXY(20,27);
-    $pdf->MultiCell($posxfin-$posxini,7, "REPORTE de ENTREGA de SUBSIDIOS",'','C',0, 0, '', '', true);
+    $pdf->MultiCell($posxfin-$posxini,7, "REPORTE de VENTAS  de fecha : ".$dateA." a ".$dateB,'','C',0, 0, '', '', true);
 
-    $pdf->SetXY(20,33);
-    $pdf->MultiCell($posxfin-$posxini,7, "De Fecha: ".date("d-m-Y"),'','C',0, 0, '', '', true);
+    //$pdf->SetXY(20,33);
+    //$pdf->MultiCell($posxfin-$posxini,7, "De Fecha de impresion: ".date("d-m-Y"),'','C',0, 0, '', '', true);
 }
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
-$pdf->Output('ReporteEntregaSubsidios.pdf', 'I');
+$pdf->Output('ReporteEntregaSubsidios_'.date("d-m-Y").'.pdf', 'I');
 
 //============================================================+
 // END OF FILE
