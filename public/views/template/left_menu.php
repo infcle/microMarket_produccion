@@ -51,7 +51,7 @@
             <li class="menu-list <?php echo $menu_a['reportes']; ?>"><a href=""><i class="fa fa-copy"></i> <span>Reportes</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/"> Reporte de entregas</a></li>
-                    <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/"> Reporte de producto</a></li>
+                    <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/ventas"> Reporte de ventas</a></li>
                 </ul>
             </li>
             <?php endif; ?>
