@@ -8,15 +8,25 @@
             	<form class="form-horizontal">
 	                <div class="form-group">
 	                    <label class="control-label col-md-3">Seleccione Fecha para consulta de la venta :</label>
-	                    <div class="col-md-4 col-xs-11">
+	                    <div class="col-md-3 col-xs-11">
 	                        <div data-date-viewmode="date" data-date="<?php echo date('d/m/Y'); ?>"  class="input-append date cFecha">
                                 <input type="text" readonly="" value="" size="16" class="form-control" name="fechaConsulta" id="fechaConsulta">
                                 <span class="input-group-btn add-on">
                                     <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
                             	</span>
                             </div>
-	                    </div>
-	                    <div class="col-sm-offset-1 col-md-4">
+                        </div>
+                        <label class="control-label col-md-2">a</label>
+                        <div class="col-md-3 col-xs-11">
+	                        <div data-date-viewmode="date" data-date="<?php echo date('d/m/Y'); ?>"  class="input-append date cFecha">
+                                <input type="text" readonly="" value="" size="16" class="form-control" name="fechaConsulta" id="fechaConsulta">
+                                <span class="input-group-btn add-on">
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                            	</span>
+                            </div>
+                        </div>
+                        
+	                    <div class="col-sm-offset-1 col-md-3">
 					    	<button type="button" class="btn btn-success" data-toggle="modal" onclick="verRep()" data-target="#modalImprimir">Mostrar Reporte <span class="fa fa-print"></span></button>
 					    </div>
 	                </div>
