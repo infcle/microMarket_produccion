@@ -122,6 +122,7 @@ if (!empty($hidetop)){
     $iniY = 30;
     $curY = $tab_top + 12;
     $nexY = 30;
+    $total_ventas = 0;
     foreach($res as $fila){
 
         $pdf->Rect(20, $tab_top, 175, $tab_top + $tab_height+10, 'D');
@@ -136,6 +137,7 @@ if (!empty($hidetop)){
         
         $pdf->SetXY($posxben, $curY);
         $pdf->MultiCell($posxfin-8-$posxben-1, 1,$fila['preciototal'] , 0, 'R',0);
+        $total_ventas = $total_ventas+$fila['preciototal'];
         
         $nexY = $pdf->GetY();
         $curY = $nexY + 1;
@@ -167,14 +169,18 @@ if (!empty($hidetop)){
                  
                 //$pdf->line($posxci-1, $tab_top, $posxci-1, $tab_top + $tab_height+ 50);
                 $pdf->line(20, $tab_top+10, 216-21, $tab_top+10);
+
+                cabezeraReporte($pdf,$dateA,$dateB);
             }
-            
-        }else {
-            cabezeraReporte($pdf,$dateA,$dateB);
+        
         }
 
         
     }
+
+    $pdf->SetXY($posxnro-1, 250);
+    $pdf->MultiCell($posxfin-$posxnro-3,2, "Venta Total : ".$total_ventas." Bs",'','R', 1, 1);
+
 // ---------------------------------------------------------
 
 function cabezeraReporte($pdf,$dateA,$dateB){
