@@ -9,7 +9,8 @@
 	$titulo="Nuevo cliente";
 	$contenido="cliente/registro.php";
 	$sub_directory="";
-	$menu_a= array();
+	$menu_a= $menus['CLIENTE'];
+	$subTitulo="Clientes";
 
 	$pie_class="si";
 	require_once ('../../../public/views/plantilla.php');
