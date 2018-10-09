@@ -55,12 +55,7 @@
                 </ul>
             </li>
             <?php endif; ?>
-            <li class="menu-list <?php echo $menu_a['reportes']; ?>"><a href=""><i class="fa fa-copy"></i> <span>Clientes</span></a>
-                <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/"> Listado</a></li>
-                    <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/"> Registro de cliente</a></li>
-                </ul>
-            </li>
+            
             <li class="<?php echo $menu_a['cliente']; ?>">
                 <a href="<?php echo ROOT_CONTROLLER; ?>cliente/"><i class="fa fa-tags"></i> <span>Clientes</span></a>
             </li>
