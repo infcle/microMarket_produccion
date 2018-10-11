@@ -2,7 +2,10 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Lista de productos
+                Lista de Clientes
+                <span class="tools pull-right">
+                    <a href="<?php echo ROOT_CONTROLLER; ?>cliente/registro.php" class="fa fa-plus"></a>
+                 </span>
             </header>
             <div class="panel-body">
                 <div class="adv-table">

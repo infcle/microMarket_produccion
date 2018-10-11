@@ -55,14 +55,12 @@
                 </ul>
             </li>
             <?php endif; ?>
-            <li class="menu-list <?php echo $menu_a['reportes']; ?>"><a href=""><i class="fa fa-copy"></i> <span>Clientes</span></a>
+
+            <li class="menu-list <?php echo $menu_a['cliente']; ?>"><a href=""><i class="fa fa-users"></i> <span>Clientes</span></a>
                 <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/"> Listado</a></li>
-                    <li class="<?php echo $menu_a['reportes_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>reporte/"> Registro de cliente</a></li>
+                    <li class="<?php echo $menu_a['lista_c']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>cliente/"><i class="fa fa-tags"></i> <span>Clientes</span></a></li>
+                    <li class="<?php echo $menu_a['registro_c']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>cliente/registro.php"> Registro de Clientes</a></li>
                 </ul>
-            </li>
-            <li class="<?php echo $menu_a['cliente']; ?>">
-                <a href="<?php echo ROOT_CONTROLLER; ?>cliente/"><i class="fa fa-tags"></i> <span>Clientes</span></a>
             </li>
             <?php if($_SESSION['rol']==1 || $_SESSION['rol']==0): ?>
             <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>

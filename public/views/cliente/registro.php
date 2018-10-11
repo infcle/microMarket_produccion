@@ -6,40 +6,81 @@
             </header>
             <div class="panel-body">
                 <div class=" form">
-                    <form class="cmxform form-horizontal adminex-form" id="frmUsuario" name="frmUsuario" method="post">
-                        <div class="form-group ">
-                            <label for="cname" class="control-label col-lg-2">Nombre completo (obligatorio)</label>
-                            <div class="col-lg-8">
-                                <input class=" form-control" id="name" name="name" minlength="2" type="text" required />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="user" class="control-label col-lg-2">nombre de usuario (Obligatorio)</label>
-                            <div class="col-lg-8">
-                                <input class="form-control " id="user" type="text" name="user" required />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="password" class="control-label col-lg-2">Contraseña (obligatorio)</label>
-                            <div class="col-lg-8">
-                                <input class="form-control " id="password" type="password" name="password" required />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="password_repeat" class="control-label col-lg-2">Repetir contraseña</label>
-                            <div class="col-lg-8">
-                                <input class="form-control" type="password" id="password_repeat" name="password_repeat" required/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-primary" type="submit">Registrar</button>
-                                <button class="btn btn-default" type="button">Cancelar</button>
-                            </div>
-                        </div>
+                <form role="form" id="frmRegistrar" name="frmRegistrar">
+                    <div class="form-group">
+                        <label for="Nombre">APELLIDOS Y NOMBRES</label>
+                        <input class=" form-control" id="nombre" name="nombre" type="text" minlength="7"required/>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="user" class="control-label">CARNET DE IDENTIDAD</label>
+                        <input class="form-control" id="ci" type="text" name="ci" maxlength="11" required/>
+                    </div><br>
+                    <div class=" form-footer">
+                        <button type="submit" class="btn btn-primary" id="btnRegistrar" >Crear</button>
+                    </div>
                     </form>
                 </div>
             </div>
         </section>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#frmRegistrar').validate({
+            debug:true,
+            rules:{
+                nombre:{
+                    required:true,
+                    minlength: 4,
+                    maxlength:40,
+                },
+                ci:{
+                    required:true,
+                    minlength:5,
+                    maxlength:20,
+                    remote: {
+                        url: "../../models/cliente/verifica.php",
+                        type: 'post',
+                        data: {
+                            ci: function() {
+                                return $("#ci").val();
+                            }
+                        }
+                    }
+                },
+            },
+            messages:{
+                ci:{
+                    remote:"el numero de carnet ya esta registrado."
+                }
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: '../../models/cliente/registro_model.php',
+                    type: 'post',
+                    data: $("#frmRegistrar").serialize(),
+                    beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
+                    success: function(response){
+                        if(response==1){
+                            var nom=$('#nombre').val();
+                            var ci=$('#ci').val();
+                            $('#nombre').val('');
+                            $('#ci').val('');
+                            $('#txt_usuario').val(nom);
+                            $('#txt_ci').val(ci);
+                            $('#modal_ventas').modal('hide');
+                            $('#btnRegistrar').attr({disabled: 'true'});
+                            transicionSalir();
+                            mensajes_alerta('DATOS REGISTRADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
+                        }else{
+                            transicionSalir();
+                            mensajes_alerta('ERROR AL REGISTRAR AL CLIENTE verifique los datos!! '+response,'error','REGISTRAR DATOS');
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
