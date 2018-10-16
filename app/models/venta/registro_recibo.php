@@ -44,6 +44,7 @@
 		if($result->num_rows > 0){
 			while ($row = $result->fetch_array() ) {
 				$nroCompra= $row[0];
+				$_SESSION['nroCompra']=$nroCompra;
 			}
 		}else
 			echo "ningun registro";
@@ -61,6 +62,7 @@
 	}else
 		echo "Error consulta";
 
+	
 	$id_user=$_SESSION['id_user'];
 	$long=count($id_prod);
 	$fecha=date('Y-m-d H:i:s');
@@ -109,12 +111,15 @@
 		    	$cont++;
 		    }
 		}
+		
 		if($cont==$long){
 			echo 1;
-			require_once '../../controller/reporte/recibo.php';
+			require_once '../../controller/reporte/recibo_original.php';
+				
 		}
 		else
 			echo 0;
+					
 	}else {
 		echo "Falló la insercion: Recibo (" . $con->errno . ") " . $con->error;exit();
 	}
