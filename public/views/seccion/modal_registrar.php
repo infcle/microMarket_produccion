@@ -14,24 +14,23 @@
                     </div>
                       <span>Limites por ticket</span> <br><br>
 
-                            <div class="form-group row">
+                    <div class="form-group row">
 
                               <div class="col-xs-2">
                                  <label>ticket 1</label>
-                                 <input class="form-control btn btn-info" id="lim1" name="lim1" type="text">
+                                 <input class="form-control btn btn-info" id="limite1" name="limite1" type="number" required="">
                               </div>
 
                              <div class="col-xs-2">
                                  <label>ticket 2</label>
-                                 <input class="form-control btn btn-info" id="lim2" name="lim2" type="text">
+                                 <input class="form-control btn btn-info" id="limite2" name="limite2" type="number" required="">
                              </div>
 
                               <div class="col-xs-2">
                                  <label>ticket 3</label>
-                                 <input class="form-control btn btn-info" id="lim3" name="lim3" type="text">
+                                 <input class="form-control btn btn-info" id="limite3" name="limite3" type="number" required="">
                              </div>
                             </div>
-
                     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

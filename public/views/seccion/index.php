@@ -126,17 +126,34 @@
         });
         $("#frmRegistrar").validate({
             debug:true,
-            rules:{
-                nombre:{
+            rules:
+            {
+                nombre:
+                {
                     required:true,
                     minlength: 3,
                     maxlength:30,
                 }
             },
-            messages:{
-                nombre:{
+            messages:
+            {
+                nombre:
+                {
                     required:"Este es Campo Obligatorio.",
+                },
+                limite1:
+                {
+                  required:"Campo Obligatorio.",
+                },
+                limite2:
+                {
+                  required:"Campo Obligatorio.",
+                },
+                limite3:
+                {
+                  required:"Campo Obligatorio.",
                 }
+
             },
             submitHandler: function (form) {
                 $.ajax({
@@ -159,7 +176,7 @@
                             }, 3000);
                         }else{
                             transicionSalir();
-                            mensajes_alerta('ERROR AL REGISTRAR ALA SECCION  verifique los datos!! '+response,'error','GUARDAR DATOS');
+                            mensajes_alerta('ERROR AL REGISTRAR LA SECCION  verifique los datos!! '+response,'error','GUARDAR DATOS');
                         }
                     }
                 });

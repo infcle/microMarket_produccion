@@ -9,7 +9,7 @@
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
                     <div class="form-group">
                         <label for="Nombre">APELLIDOS Y NOMBRES</label>
-                        <input class=" form-control" id="nombre" name="nombre" type="text" minlength="7"required/>
+                        <input class=" form-control" id="nombre" name="nombre" type="text" minlength="7" required/>
                     </div><br>
                     <div class="form-group">
                         <label for="user" class="control-label">CARNET DE IDENTIDAD</label>
