@@ -32,7 +32,7 @@
                              </div>
                             </div>
 
-                    <br><br><br><br><br>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="btnRegistrar" >Crear</button>
