@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
-            
+            <div class="panel-heading">
+                VENTA DE PRODUCTOS
+            </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -28,53 +30,34 @@
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                         <form class="form-horizontal" role="form" name="frmVenta" id="frmVenta">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="row panel-body">
-										
                                         <div class="form-group">
-                                            <label for="ci" class="col-lg-1 col-sm-2 control-label">C.I.</label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" id="txt_ci" name="txt_ci" placeholder="Digite C.I. presione buscar" required>
+                                            <label for="ci" class="col-lg-2 col-sm-2 control-label">C.I.</label>
+                                            <div class="col-md-7">
+                                                <input type="text" class="form-control" id="txt_ci" name="txt_ci" placeholder="Digite C.I. luego presione buscar" required>
                                             </div>
-                                           
+                                            <div class="col-md-1 hide" id="nuevoCliente">
+                                                <a href="#modal_ventas" class="btn btn-success tooltips" data-original-title="Nuevo cliente" data-toggle="modal">
+                                                    <span class="fa fa-pencil"></span>
+                                                </a>
+                                            </div>
                                             <div class="col-md-1" id="buscarCliente">
                                                 <button type="button" class="btn btn-info tooltips" data-toggle="tooltip" data-original-title="Presione para Buscar" id="btnBuscar"><span class="fa fa-search"></span></button>
                                             </div>
                                              <div class="col-md-1">
                                                 <button type="button" class="btn btn-primary tooltips" data-toggle="tooltip" data-original-title="Limpiar y volver a buscar" id="limpiar"><span class="fa fa-refresh"></span></button>
                                             </div>
-											<label for="cliente" class="col-lg-1 col-sm-2 control-label">Cliente</label>
-                                            <div class="col-lg-5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cliente" class="col-lg-2 col-sm-2 control-label">Cliente</label>
+                                            <div class="col-lg-10">
                                                 <input type="text" class="form-control" id="txt_usuario" name="txt_usuario" placeholder="Nombre del cliente" required readonly="true">
                                             </div>
                                         </div>
-                                       
                                     </div>
                                 </div>
                             </div>
-							<div class="row">
-                                <div class="col-md-3"> 
-									<h5>Carnes/Deri. <span class="label label-default">Cupones</span>
-									<span class="badge">0</span>
-									</h5>
-                                </div>
-								<div class="col-md-3"> 
-									<h5>Pollo/pescado <span class="label label-default">Cupones</span>
-									<span class="badge">0</span>
-									</h5>
-                                </div>
-								<div class="col-md-3"> 
-									<h5>tuberculos <span class="label label-default">Cupones</span>
-									<span class="badge">0</span>
-									</h5>
-                                </div>
-								<div class="col-md-3"> 
-									<h5>Frutas <span class="label label-default">Cupones</span>
-									<span class="badge">0</span>
-									</h5>
-                                </div>
-                            </div>
-							
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
                                     <div class="panel-heading">
