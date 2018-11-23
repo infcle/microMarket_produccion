@@ -54,24 +54,30 @@
                             </div>
 							<div class="row">
                                 <div class="col-md-3"> 
-									<h5>Carnes/Deri. <span class="label label-default">Cupones</span>
+									<h5>Carnes/Derivados.</h5>
+									<span class="label label-success">Cupones</span>
 									<span class="badge">0</span>
-									</h5>
+									
                                 </div>
 								<div class="col-md-3"> 
-									<h5>Pollo/pescado <span class="label label-default">Cupones</span>
+									<h5>Pollo/Pescado.</h5>
+									<span class="label label-success">Cupones</span>
 									<span class="badge">0</span>
-									</h5>
                                 </div>
-								<div class="col-md-3"> 
-									<h5>tuberculos <span class="label label-default">Cupones</span>
+								<div class="col-md-2"> 
+									<h5>Tuberculos</h5>
+									<span class="label label-success">Cupones</span>
 									<span class="badge">0</span>
-									</h5>
                                 </div>
-								<div class="col-md-3"> 
-									<h5>Frutas <span class="label label-default">Cupones</span>
+								<div class="col-md-2"> 
+									<h5>Frutas</h5>
+									<span class="label label-success">Cupones</span>
 									<span class="badge">0</span>
-									</h5>
+                                </div>
+								<div class="col-md-2"> 
+									<h5>Verduras</h5>
+									<span class="label label-success">Cupones</span>
+									<span class="badge">0</span>
                                 </div>
                             </div>
 							
