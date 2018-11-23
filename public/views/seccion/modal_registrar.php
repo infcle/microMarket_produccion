@@ -18,17 +18,17 @@
 
                               <div class="col-xs-2">
                                  <label>ticket 1</label>
-                                 <input class="form-control btn btn-info" id="limite1" name="limite1" type="number" required="">
+                                 <input class="form-control btn btn-info" id="limite1" name="limite1" type="number" required="" value="0">
                               </div>
 
                              <div class="col-xs-2">
                                  <label>ticket 2</label>
-                                 <input class="form-control btn btn-info" id="limite2" name="limite2" type="number" required="">
+                                 <input class="form-control btn btn-info" id="limite2" name="limite2" type="number">
                              </div>
 
                               <div class="col-xs-2">
                                  <label>ticket 3</label>
-                                 <input class="form-control btn btn-info" id="limite3" name="limite3" type="number" required="">
+                                 <input class="form-control btn btn-info" id="limite3" name="limite3" type="number">
                              </div>
                             </div>
                     

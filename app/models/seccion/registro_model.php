@@ -8,6 +8,7 @@
 	$lim1=trim($_POST["limite1"]);
 	$lim2=trim($_POST["limite2"]);
 	$lim3=trim($_POST["limite3"]);
+
 	
 	//$valorTicket =$lim1.$lim2.$lim3;
 	$valorTicket =$lim1." ".$lim2." ".$lim3;

@@ -12,6 +12,25 @@
                         <label for="Nombre">Nuevo Nombre de Seccion</label>
                         <input class=" form-control" id="name" name="name" minlength="7 " type="text" required autofocus="true" />
                     </div><br>
+
+                    <span>Limites por ticket</span> <br><br>
+
+                    <div class="form-group row">
+                        <div class="col-xs-2">
+                                 <label>ticket 1</label>
+                                 <input class="form-control" id="uno" name="uno" type="number" required>
+                              </div>
+
+                             <div class="col-xs-2">
+                                 <label>ticket 2</label>
+                                 <input class="form-control btn btn-info" id="dos" name="dos" type="number">
+                             </div>
+
+                              <div class="col-xs-2">
+                                 <label>ticket 3</label>
+                                 <input class="form-control btn btn-info" id="tres" name="tres" type="number">
+                        </div>
+                    </div>
                  
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

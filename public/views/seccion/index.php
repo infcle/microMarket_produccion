@@ -55,7 +55,17 @@
             data: {id_seccion: id},
             success: function(datos){
                 $("#name").val(datos['seccion']['nombre']);
+                //$("#name").val(datos['seccion']['valor_ticket']);
+                $("#limite1").val(datos['seccion']['valor_ticket']);
                 $("#id_seccion_modificar").val(datos['seccion']['id_seccion']);
+                
+                var lim = datos['seccion']['valor_ticket'].split(" ");
+                console.log("CADENA"+ datos['seccion']['valor_ticket']);
+                console.log("CADENA 2"+ lim[2]);
+                                           
+                $("#uno").val(lim[0]);
+                $("#dos").val(lim[1]);
+                $("#tres").val(lim[2]);
             }
         });
     }
