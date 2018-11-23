@@ -56,28 +56,28 @@
                                 <div class="col-md-3"> 
 									<h5>Carnes/Derivados.</h5>
 									<span class="label label-success">Cupones</span>
-									<span class="badge">0</span>
+									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
 									
                                 </div>
 								<div class="col-md-3"> 
 									<h5>Pollo/Pescado.</h5>
 									<span class="label label-success">Cupones</span>
-									<span class="badge">0</span>
+									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Tuberculos</h5>
 									<span class="label label-success">Cupones</span>
-									<span class="badge">0</span>
+									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Frutas</h5>
 									<span class="label label-success">Cupones</span>
-									<span class="badge">0</span>
+									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Verduras</h5>
 									<span class="label label-success">Cupones</span>
-									<span class="badge">0</span>
+									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
                                 </div>
                             </div>
 							
