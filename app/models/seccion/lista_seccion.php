@@ -17,7 +17,7 @@
 		    <tr class="gradeX">
 		        <td><?php echo $seccion['id_seccion']; ?></td>
 		        <td><?php echo $seccion['nombre']; ?></td>
-		        <td><?php echo $seccion['limite']; ?></td>
+		        <td><?php echo $seccion['valor_ticket']; ?></td>
 		        <td ></td>
 		    </tr>
 		<?php endforeach;

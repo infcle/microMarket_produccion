@@ -16,25 +16,29 @@
                     <table  class="display table table-bordered table-striped" id="tbSeccion">
                         <thead>
                             <tr>
+
                                 <th>codigo</th>
                                 <th>Nombre de seccion</th>
+                                <th>limites de seccion </th>
                                 <th class="text-center">Acciones</th>
                             </tr>
+                            
                         </thead>
                         <tbody>
-                            <?php foreach ($secciones as $seccion): ?>
+                        <?php foreach ($secciones as $seccion): ?>
                                 <tr class="gradeX">
                                     <td><?php echo $seccion['id_seccion']; ?></td>
                                     <td><?php echo $seccion['nombre']; ?></td>
-                                    <td >
+                                    <td><?php echo $seccion['valor_ticket']; ?></td>
+                                    <td>
                                        <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $seccion['id_seccion'] ?>)">
                                         <span class="fa fa-edit" ></span>
-                                    </a>
-                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $seccion['id_seccion'] ?>)">
+                                       </a>
+                                       <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $seccion['id_seccion'] ?>)">
                                         <span class="fa fa-trash-o"></span>
-                                    </a>
-                                </td>
-                            </tr>
+                                       </a>
+                                    </td>
+                                </tr>
                         <?php endforeach;?>
                     </tbody>
                 </table>
