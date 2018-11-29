@@ -62,6 +62,7 @@
           submitHandler: function (form) {
             var cantPeso=$('#pesoCantidad').val();
             var codProd=$('#mproducto').find(':selected').val();
+            //console.log("COD PRO ->"+codProd);
             leer('si',codProd,cantPeso);            
             $.ajax({
                 url: '../../models/venta/tipoventa.php',

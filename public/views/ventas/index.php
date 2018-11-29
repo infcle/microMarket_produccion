@@ -62,22 +62,22 @@
 								<div class="col-md-3"> 
 									<h5>Pollo/Pescado.</h5>
 									<span class="label label-success">Cupones</span>
-									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
+									<span id="sumpollos" name="sumpollos" class="badge">0</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Tuberculos</h5>
 									<span class="label label-success">Cupones</span>
-									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
+									<span id="sumtuberculos" name="sumtuberculos" class="badge">0</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Frutas</h5>
 									<span class="label label-success">Cupones</span>
-									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
+									<span id="sumfrutas" name="sumfrutas" class="badge">0</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Verduras</h5>
 									<span class="label label-success">Cupones</span>
-									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
+									<span id="sumverduras" name="sumverduras" class="badge">0</span>
                                 </div>
                             </div>
 							
@@ -321,10 +321,41 @@
                 },
                 success: function(datos){
                     transicionSalir();
+                    var ca=0,po=0,tu=0,ve=0,fr=0;
                     if(datos['estado']=='correcto'){
                         var total=$('#prec_total').val();
                         var detalle=datos['detalle'];
-                        //console.log(datos['detalle']);
+                        var id_seccion = detalle['idseccion'];
+                        console.log("seccion -> "+id_seccion);
+                        
+                        switch (id_seccion) {
+                            case '1':
+                            ca++;
+                            $('#sumcarnes').html(ca);
+                                break;
+                            case '2':
+                            po++;
+                            $('#sumpollos').html(po);
+                                break;
+                            case '3':
+                            tu++;
+                            $('#sumtuberculos').html(tu);
+                               break;
+
+                            case '4':
+                            ve++;
+                            $('#sumfrutas').html(ve);
+                                break;
+
+                            case '5':
+                            fr++;
+                            $('#sumverduras').html(fr);
+                               break;
+
+                            default:
+                                break;
+                        }
+                        
                         $('#cod_barra').val('');
                         $('#miDetalle').append('<tr><td><input type="hidden" name="id_prod[]" value="'+detalle['id_prod']+'"><input type="text" class="text-center" readonly name="producto[]" id="producto[]" value="'+detalle['nombre']+'"></td><td><input type="text" name="precio[]" class ="text-right col-md-12" value="'+detalle['precio']+'" readonly></td><td><input type="text" name="cantpeso[]" class="text-right col-md-12" value="'+datos['peso']+'" readonly></td><td><input type="text" name="subtotal[]" class ="text-right col-md-12" value="'+datos['precioTotal']+'" readonly> <input type="hidden" name="codbarras[]" value="'+codigo+'"></td><td><button type="button" class="btn btn-danger eliminar" onclick="resta('+datos['precioTotal']+')"><span class="fa fa-trash-o"></span></button></td></tr>');
 
