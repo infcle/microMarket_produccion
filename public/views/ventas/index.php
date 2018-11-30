@@ -41,7 +41,7 @@
                                                 <button type="button" class="btn btn-info tooltips" data-toggle="tooltip" data-original-title="Presione para Buscar" id="btnBuscar"><span class="fa fa-search"></span></button>
                                             </div>
                                              <div class="col-md-1">
-                                                <button type="button" class="btn btn-primary tooltips" data-toggle="tooltip" data-original-title="Limpiar y volver a buscar" id="limpiar"><span class="fa fa-refresh"></span></button>
+                                                <button type="button" class="btn btn-primary tooltips" data-toggle="tooltip" http://www.androidcurso.com/index.php/modulo-fundamentos/proyectos-finales-alumnosdata-original-title="Limpiar y volver a buscar" id="limpiar"><span class="fa fa-refresh"></span></button>
                                             </div>
 											<label for="cliente" class="col-lg-1 col-sm-2 control-label">Cliente</label>
                                             <div class="col-lg-5">
@@ -53,31 +53,34 @@
                                 </div>
                             </div>
 							<div class="row">
-                                <div class="col-md-3"> 
-									<h5>Carnes/Derivados.</h5>
-									<span class="label label-success">Cupones</span>
-									<span id="sumcarnes" name="sumcarnes" class="badge">0</span>
+                                <div class="col-md-2"> 
+									<h5>Carnes/Derivados</h5>
+									<span class="label label-success">Cupones</span><br><br>
+									<input type="text" id="sumcarnes" name="sumcarnes" value="" size="3">
 									
                                 </div>
-								<div class="col-md-3"> 
-									<h5>Pollo/Pescado.</h5>
-									<span class="label label-success">Cupones</span>
-									<span id="sumpollos" name="sumpollos" class="badge">0</span>
-                                </div>
 								<div class="col-md-2"> 
-									<h5>Tuberculos</h5>
-									<span class="label label-success">Cupones</span>
-									<span id="sumtuberculos" name="sumtuberculos" class="badge">0</span>
-                                </div>
-								<div class="col-md-2"> 
-									<h5>Frutas</h5>
-									<span class="label label-success">Cupones</span>
-									<span id="sumfrutas" name="sumfrutas" class="badge">0</span>
+									<h5>Pollo/Pescado</h5>
+									<span class="label label-success">Cupones</span> <br><br>
+									<input type="text" name="" value="" id="sumpollos" name="sumpollos" size="3"  >
+                                    
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Verduras</h5>
-									<span class="label label-success">Cupones</span>
-									<span id="sumverduras" name="sumverduras" class="badge">0</span>
+									<span class="label label-success">Cupones</span> <br><br>
+									<input type="text" id="sumverduras" name="sumverduras" value="" size="3" >
+
+                                </div>
+								<div class="col-md-2"> 
+									<h5>tuberculos</h5>
+									<span class="label label-success">Cupones</span> <br><br>
+									<input type="text" name="sumtuberculos" id="sumtuberculos" value="" size="3">
+                                </div>
+								<div class="col-md-2"> 
+									<h5>frutas</h5>
+									<span class="label label-success">Cupones</span> <br><br>
+									<input type="text" name="sumfrutas" id="sumfrutas" value="" size="3">
+                                    
                                 </div>
                             </div>
 							
