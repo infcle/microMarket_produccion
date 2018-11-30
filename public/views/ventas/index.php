@@ -56,30 +56,30 @@
                                 <div class="col-md-2"> 
 									<h5>Carnes/Derivados</h5>
 									<span class="label label-success">Cupones</span><br><br>
-									<input type="text" id="sumcarnes" name="sumcarnes" value="0" size="3">
+									<input type="text" id="sumcarnes" name="sumcarnes" value="" size="3">
 									
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Pollo/Pescado</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="" value="0" id="sumpollos" name="sumpollos" size="3"  >
+									<input type="text" name="" value="" id="sumpollos" name="sumpollos" size="3"  >
                                     
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Verduras</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" id="sumverduras" name="sumverduras" value="0" size="3" >
+									<input type="text" id="sumverduras" name="sumverduras" value="" size="3" >
 
                                 </div>
 								<div class="col-md-2"> 
 									<h5>tuberculos</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="sumtuberculos" id="sumtuberculos" value="0" size="3">
+									<input type="text" name="sumtuberculos" id="sumtuberculos" value="" size="3">
                                 </div>
 								<div class="col-md-2"> 
 									<h5>frutas</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="sumfrutas" id="sumfrutas" value="0" size="3">
+									<input type="text" name="sumfrutas" id="sumfrutas" value="" size="3">
                                     
                                 </div>
                             </div>
