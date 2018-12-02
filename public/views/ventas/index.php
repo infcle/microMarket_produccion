@@ -53,16 +53,16 @@
                                 </div>
                             </div>
 							<div class="row">
-                                <div class="col-md-2"> 
+                                <div class="col-md-3"> 
 									<h5>Carnes/Derivados</h5>
 									<span class="label label-success">Cupones</span><br><br>
 									<input type="text" id="sumcarnes" name="sumcarnes" value="0" size="3">
 									
                                 </div>
-								<div class="col-md-2"> 
+								<div class="col-md-3"> 
 									<h5>Pollo/Pescado</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="" value="0" id="sumpollos" name="sumpollos" size="3"  >
+									<input type="text" name="" value="0" id="sumpollos" name="sumpollos" size="3">
                                     
                                 </div>
 								<div class="col-md-2"> 
@@ -323,6 +323,7 @@
                     transicion("Obteniendo Datos....");
                 },
                 success: function(datos){
+                    console.log('datos '+ datos);
                     transicionSalir();
                     var ca=0,po=0,tu=0,ve=0,fr=0;
                     if(datos['estado']=='correcto'){
@@ -332,27 +333,32 @@
                         console.log("seccion -> "+id_seccion);
                         
                         switch (id_seccion) {
-                            case '1':
-                            ca++;
-                            $('#sumcarnes').html(ca);
+                            case '1':                            
+                                ca++;
+                                sumaparcial = $('#sumcarnes').val();
+                                $('#sumcarnes').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
                             case '2':
                             po++;
-                            $('#sumpollos').html(po);
+                            console.log('dos '+ id_seccion );
+                            $('#sumpollos').val(po);
                                 break;
                             case '3':
                             tu++;
-                            $('#sumtuberculos').html(tu);
+                            console.log('tres '+ id_seccion );
+                            $('#sumtuberculos').val(tu);
                                break;
 
                             case '4':
                             ve++;
-                            $('#sumfrutas').html(ve);
+                            console.log('cuatro '+ id_seccion );
+                            $('#sumfrutas').val(ve);
                                 break;
 
                             case '5':
                             fr++;
-                            $('#sumverduras').html(fr);
+                            console.log('cinco '+ id_seccion );
+                            $('#sumverduras').val(fr);
                                break;
 
                             default:
@@ -360,7 +366,7 @@
                         }
                         
                         $('#cod_barra').val('');
-                        $('#miDetalle').append('<tr><td><input type="hidden" name="id_prod[]" value="'+detalle['id_prod']+'"><input type="text" class="text-center" readonly name="producto[]" id="producto[]" value="'+detalle['nombre']+'"></td><td><input type="text" name="precio[]" class ="text-right col-md-12" value="'+detalle['precio']+'" readonly></td><td><input type="text" name="cantpeso[]" class="text-right col-md-12" value="'+datos['peso']+'" readonly></td><td><input type="text" name="subtotal[]" class ="text-right col-md-12" value="'+datos['precioTotal']+'" readonly> <input type="hidden" name="codbarras[]" value="'+codigo+'"></td><td><button type="button" class="btn btn-danger eliminar" onclick="resta('+datos['precioTotal']+')"><span class="fa fa-trash-o"></span></button></td></tr>');
+                        $('#miDetalle').append('<tr><td><input type="hidden" name="id_prod[]" value="'+detalle['id_prod']+'"><input type="text" class="text-center" readonly name="producto[]" id="producto[]" value="'+detalle['nombre']+'"></td><td><input type="text" name="precio[]" class ="text-right col-md-12" value="'+detalle['precio']+'" readonly></td><td><input type="text" name="cantpeso[]" class="text-right col-md-12" value="'+datos['peso']+'" readonly></td><td><input type="text" name="subtotal[]" class ="text-right col-md-12" value="'+datos['precioTotal']+'" readonly> <input type="hidden" name="codbarras[]" value="'+codigo+'"></td><td><button type="button" class="btn btn-danger eliminar" onclick="resta('+datos['precioTotal']+','+id_seccion+')"><span class="fa fa-trash-o"></span></button></td></tr>');
 
                         $('#prec_total').val(redondeo2decimales(total*1+datos['precioTotal']));
                     }else if (datos['estado']=='No') {
@@ -371,8 +377,44 @@
             });
         }
     }
-    function resta(numero){
+    function resta(numero, idseccion){
+        console.log('id ' + idseccion);
         numero=numero*1;
+        idseccion = idseccion * 1;
+        switch (idseccion) {
+            case 1:
+                sumaparcial =Number($('#sumcarnes').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumcarnes').val(redondeo2decimales(subtot_redondeo));
+                break;
+            case 2:
+            po++;
+            console.log('dos '+ id_seccion );
+            $('#sumpollos').val(po);
+                break;
+            case 3:
+            tu++;
+            console.log('tres '+ id_seccion );
+            $('#sumtuberculos').val(tu);
+               break;
+
+            case 4:
+            ve++;
+            console.log('cuatro '+ id_seccion );
+            $('#sumfrutas').val(ve);
+                break;
+
+            case 5:
+            fr++;
+            console.log('cinco '+ id_seccion );
+            $('#sumverduras').val(fr);
+               break;
+
+            default:
+            console.log('ninguno');
+                break;
+        }
+        
         var total=Number($('#prec_total').val()*1);
         var tot_redondeo=total-numero;
         $('#prec_total').val(redondeo2decimales(tot_redondeo));
