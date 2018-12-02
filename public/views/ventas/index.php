@@ -339,26 +339,30 @@
                                 $('#sumcarnes').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
                             case '2':
-                            po++;
-                            console.log('dos '+ id_seccion );
-                            $('#sumpollos').val(po);
+                                po++;
+                                console.log('dos '+ id_seccion );
+                                sumaparcial = $('#sumpollos').val();
+                                $('#sumpollos').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
                             case '3':
-                            tu++;
-                            console.log('tres '+ id_seccion );
-                            $('#sumtuberculos').val(tu);
+                                tu++;
+                                console.log('tres '+ id_seccion );                            
+                                sumaparcial = $('#sumtuberculos').val();
+                                $('#sumtuberculos').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                break;
 
                             case '4':
                             ve++;
                             console.log('cuatro '+ id_seccion );
-                            $('#sumfrutas').val(ve);
+                                sumaparcial = $('#sumfrutas').val();
+                                $('#sumfrutas').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
 
                             case '5':
                             fr++;
                             console.log('cinco '+ id_seccion );
-                            $('#sumverduras').val(fr);
+                                sumaparcial = $('#sumverduras').val();
+                                $('#sumverduras').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                break;
 
                             default:
@@ -390,24 +394,32 @@
             case 2:
             po++;
             console.log('dos '+ id_seccion );
-            $('#sumpollos').val(po);
+                sumaparcial =Number($('#sumpollos').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumpollos').val(redondeo2decimales(subtot_redondeo));
                 break;
             case 3:
             tu++;
             console.log('tres '+ id_seccion );
-            $('#sumtuberculos').val(tu);
+                sumaparcial =Number($('#sumtuberculos').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumtuberculos').val(redondeo2decimales(subtot_redondeo));
                break;
 
             case 4:
             ve++;
             console.log('cuatro '+ id_seccion );
-            $('#sumfrutas').val(ve);
+                sumaparcial =Number($('#sumfrutas').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumfrutas').val(redondeo2decimales(subtot_redondeo));
                 break;
 
             case 5:
             fr++;
             console.log('cinco '+ id_seccion );
-            $('#sumverduras').val(fr);
+                sumaparcial =Number($('#sumverduras').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumverduras').val(redondeo2decimales(subtot_redondeo));
                break;
 
             default:
