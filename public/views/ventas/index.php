@@ -56,13 +56,13 @@
                                 <div class="col-md-3"> 
 									<h5>Carnes/Derivados</h5>
 									<span class="label label-success">Cupones</span><br><br>
-									<input type="text" id="sumcarnes" name="sumcarnes" value="0" size="3">
+									<input type="text" id="sumcarnes" name="sumcarnes" value="0" size="3" readonly="true">
 									
                                 </div>
 								<div class="col-md-3"> 
 									<h5>Pollo/Pescado</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="" value="0" id="sumpollos" name="sumpollos" size="3">
+									<input type="text" name="" value="0" id="sumpollos" name="sumpollos" size="3" readonly="true">
                                     
                                 </div>
 								<div class="col-md-2"> 
