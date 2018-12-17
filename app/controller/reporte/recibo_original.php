@@ -54,7 +54,7 @@ $productos = array(
 	desde el panel de control
 */
 
-$nombre_impresora = "impresoraRecibo"; 
+$nombre_impresora = "impresoraCajaUno";
 
 
 $connector = new WindowsPrintConnector($nombre_impresora);
@@ -92,12 +92,9 @@ try{
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printer->text("ORIGINAL". "\n");
 $printer->text("\n");
-$printer->text("\n");
-$printer->text("Proveedora de alimentos". "\n");
-$printer->text("ASUSERVICIO". "\n");
 $printer -> selectPrintMode();
 $printer->text("Comprobante de entrega del Subsidio". "\n");
-$printer->text("--------------------------------------------". "\n");
+$printer->text("------------------------------------------------". "\n");
 $printer->text("Nro de Recibo : ".$nroRecibo. "\n");
 #La fecha también
 $printer->text(date("Y-m-d H:i:s") . "\n");
@@ -116,7 +113,6 @@ foreach ($resCliente as $value) {
 	$total_literal = $value['total_literal'];
 }
 
-$printer->text("--------------------------------------------". "\n");
 $con->close();
 /*
 	Ahora vamos a imprimir los
@@ -132,21 +128,84 @@ $resVenta = $con->query($sqlVenta);
 
 $printer->setJustification(Printer::JUSTIFY_LEFT);
 //$items[] = array();
-$items[] = new item("Producto","Cant","Bs","Sub Total");
+//$items[] = new item("Producto","Cant","Bs","Sub Total");
+
+$idSeccion = 0;
+$sumTotal  = 0;
 //$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
 foreach ($resVenta as $value) {
 	//$printer->text($value['nombre'] ."\t".$value['peso_cantidad'] ."\t".$value['precio'] ."\t".$value['preciototal']."\n");
+	
+	if($value['idseccion'] != $idSeccion){
+		
+		if($idSeccion != 0){
+			$items[] = new item("---------------------","------","-----------","---------");
+			$items[] = new item("","","SubTotal:","".$sumTotal);
+			$items[] = new item("---------------------","------","-----------","---------");
+			$sumTotal = 0;
+		}
+		
+		
+		$idSeccion = $value['idseccion'];
+		switch ($idSeccion) {
+			case '1':
+				$items[] = new item("","","","");
+				$items[] = new item("CARNES/DERIVADOS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items[] = new item("Producto","Cant","Bs","Sub Total");
+				$items[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '2':
+				$items[] = new item("","","","");
+				$items[] = new item("POLLO/PESCADO","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items[] = new item("Producto","Cant","Bs","Sub Total");
+				$items[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '3':
+				$items[] = new item("","","","");
+				$items[] = new item("VERDURAS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items[] = new item("Producto","Cant","Bs","Sub Total");
+				$items[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '4':
+				$items[] = new item("","","","");
+				$items[] = new item("TUBERCULOS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items[] = new item("Producto","Cant","Bs","Sub Total");
+				$items[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '5':
+				$items[] = new item("","","","");
+				$items[] = new item("FRUTAS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items[] = new item("Producto","Cant","Bs","Sub Total");
+				$items[] = new item("---------------------","------","-----------","---------");
+				break;
+			
+			default:
+				
+				break;
+		}
+	}
 	$items[] = new item($value['nombre'],$value['peso_cantidad'] ,$value['precio'] ,$value['preciototal']);
 	//$items_copy[] = new item($value['nombre'],$value['peso_cantidad'] ,$value['precio'] ,$value['preciototal']);
-	//$total += $value['preciototal'];
+	$sumTotal += $value['preciototal'];
 }
+
+			$items[] = new item("---------------------","------","-----------","---------");
+			$items[] = new item("","","SubTotal:","".$sumTotal);
+			$items[] = new item("---------------------","------","-----------","---------");
+			$sumTotal = 0;
+
 $i = 0;
 foreach ($items as $item) {
 	if($i == 0){
 		//$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 		$printer->setJustification(Printer::JUSTIFY_CENTER);
 		$printer -> text($item);
-		$printer->text("--------------------------------------------". "\n");
+		$printer->text("------------------------------------------------". "\n");
 		$printer -> selectPrintMode();
 
 	}else{
@@ -208,11 +267,16 @@ class item
 	Terminamos de imprimir
 	los productos, ahora va el total
 */
-$printer->text("----------------------\n");
-$printer->text("TOTAL: Bs". $total ."\n");
+$printer->text("--------------------------------------------". "\n");
+$printer->text("TOTAL: Bs ". $total ."\n");
 $printer->text("SON ". $total_literal ."\n");
 
 
+$printer->text("\n");
+$printer->text("\n");
+$printer->text("\n");
+$printer->text("--------------------------------------------". "\n");
+$printer->text("FIRMA DE LA BENIFIARIA"."\n");
 /*
 	Podemos poner también un pie de página
 */
@@ -263,12 +327,9 @@ $con= new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 $printera -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printera->text("COPIA". "\n");
 $printera->text("\n");
-$printera->text("\n");
-$printera->text("Proveedora de alimentos". "\n");
-$printera->text("ASUSERVICIO". "\n");
 $printera -> selectPrintMode();
 $printera->text("Comprobante de entrega del Subsidio". "\n");
-$printera->text("--------------------------------------------". "\n");
+$printera->text("------------------------------------------------". "\n");
 $printera->text("Nro de Recibo : ".$nroRecibo. "\n");
 #La fecha también
 $printera->text(date("Y-m-d H:i:s") . "\n");
@@ -287,7 +348,7 @@ foreach ($resCliente as $value) {
 	$total_literal = $value['total_literal'];
 }
 
-$printera->text("--------------------------------------------". "\n");
+$printera->text("------------------------------------------------". "\n");
 $con->close();
 /*
 	Ahora vamos a imprimir los
@@ -303,20 +364,80 @@ $resVenta = $con->query($sqlVenta);
 
 $printera->setJustification(Printer::JUSTIFY_LEFT);
 //$items[] = array();
-
-$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
+$idSeccion_copy = 0;
+$sumTotal_copy  = 0;
+//$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
 foreach ($resVenta as $value) {
+
+	if($value['idseccion'] != $idSeccion_copy){
+
+		if($idSeccion_copy != 0){
+			$items_copy[] = new item("---------------------","------","-----------","---------");
+			$items_copy[] = new item("","","SubTotal:","".$sumTotal_copy);
+			$items_copy[] = new item("---------------------","------","-----------","---------");
+			$sumTotal_copy = 0;
+		}
+
+		$idSeccion_copy = $value['idseccion'];
+		switch ($idSeccion_copy) {
+			case '1':
+				$items_copy[] = new item("","","","");
+				$items_copy[] = new item("CARNES/DERIVADOS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
+				$items_copy[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '2':
+				$items_copy[] = new item("","","","");
+				$items_copy[] = new item("POLLO/PESCADO","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
+				$items_copy[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '3':
+				$items_copy[] = new item("","","","");
+				$items_copy[] = new item("VERDURAS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
+				$items_copy[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '4':
+				$items_copy[] = new item("","","","");
+				$items_copy[] = new item("TUBERCULOS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
+				$items_copy[] = new item("---------------------","------","-----------","---------");
+				break;
+			case '5':
+				$items_copy[] = new item("","","","");
+				$items_copy[] = new item("FRUTAS","","","");
+				//$items[] = new item("---------------------","------","-----------","---------");
+				$items_copy[] = new item("Producto","Cant","Bs","Sub Total");
+				$items_copy[] = new item("---------------------","------","-----------","---------");
+				break;
+			
+			default:
+				break;
+		}
+	}
+
 	//$printer->text($value['nombre'] ."\t".$value['peso_cantidad'] ."\t".$value['precio'] ."\t".$value['preciototal']."\n");
 	$items_copy[] = new item($value['nombre'],$value['peso_cantidad'] ,$value['precio'] ,$value['preciototal']);
-	//$total += $value['preciototal'];
+	$sumTotal_copy += $value['preciototal'];
 }
+
+		$items_copy[] = new item("---------------------","------","-----------","---------");
+		$items_copy[] = new item("","","SubTotal:","".$sumTotal_copy);
+		$items_copy[] = new item("---------------------","------","-----------","---------");
+		$sumTotal_copy = 0;
+
 $ii = 0;
 foreach ($items_copy as $item) {
 	if($ii == 0){
 		//$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 		$printera->setJustification(Printer::JUSTIFY_CENTER);
 		$printera-> text($item);
-		$printera->text("--------------------------------------------". "\n");
+		$printera->text("------------------------------------------------". "\n");
 		$printera-> selectPrintMode();
 
 	}else{
@@ -329,9 +450,16 @@ foreach ($items_copy as $item) {
 	Terminamos de imprimir
 	los productos, ahora va el total
 */
-$printera->text("----------------------\n");
-$printera->text("TOTAL: Bs". $total ."\n");
+$printera->text("--------------------------------------------". "\n");
+$printera->text("TOTAL: Bs ". $total ."\n");
 $printera->text("SON ". $total_literal ."\n");
+
+$printera->text("\n");
+$printera->text("\n");
+$printera->text("\n");
+$printera->text("--------------------------------------------". "\n");
+$printera->text("FIRMA DE LA BENIFIARIA"."\n");
+
 
 
 /*

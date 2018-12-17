@@ -57,30 +57,32 @@
 									<h5>Carnes/Derivados</h5>
 									<span class="label label-success">Cupones</span><br><br>
 									<input type="text" id="sumcarnes" name="sumcarnes" value="0" size="3" readonly="true">
+                                    <span>Bs</span>
 									
                                 </div>
 								<div class="col-md-3"> 
 									<h5>Pollo/Pescado</h5>
 									<span class="label label-success">Cupones</span> <br><br>
 									<input type="text" name="" value="0" id="sumpollos" name="sumpollos" size="3" readonly="true">
-                                    
+                                    <span>Bs</span>
                                 </div>
 								<div class="col-md-2"> 
 									<h5>Verduras</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" id="sumverduras" name="sumverduras" value="0" size="3" >
-
+									<input type="text" id="sumverduras" name="sumverduras" value="0" size="3" readonly>
+                                    <span>Bs</span>
                                 </div>
 								<div class="col-md-2"> 
-									<h5>tuberculos</h5>
+									<h5>Tuberculos</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="sumtuberculos" id="sumtuberculos" value="0" size="3">
+									<input type="text" name="sumtuberculos" id="sumtuberculos" value="0" size="3" readonly>
+                                    <span>Bs</span>
                                 </div>
 								<div class="col-md-2"> 
-									<h5>frutas</h5>
+									<h5>Frutas</h5>
 									<span class="label label-success">Cupones</span> <br><br>
-									<input type="text" name="sumfrutas" id="sumfrutas" value="0" size="3">
-                                    
+									<input type="text" name="sumfrutas" id="sumfrutas" value="0" size="3" readonly>
+                                    <span>Bs</span>                                    
                                 </div>
                             </div>
 							
@@ -143,6 +145,11 @@
                             mensajes_alerta('VENTA REALIZADA EXITOSAMENTE !! ','success','EDITAR DATOS');
                             $('#miDetalle').empty();
                             $('#prec_total').val('0');
+                            $('#sumcarnes').val('0');
+                            $('#sumpollos').val('0');
+                            $('#sumverduras').val('0');
+                            $('#sumtuberculos').val('0');
+                            $('#sumfrutas').val('0');
                         }else{
                             transicionSalir();
                             mensajes_alerta('ERROR AL REGISTRAR LA VENTA verifique los datos!! '+response,'error','REGISTRAR DATOS');
@@ -325,7 +332,7 @@
                 success: function(datos){
                     console.log('datos '+ datos);
                     transicionSalir();
-                    var ca=0,po=0,tu=0,ve=0,fr=0;
+                    
                     if(datos['estado']=='correcto'){
                         var total=$('#prec_total').val();
                         var detalle=datos['detalle'];
@@ -334,35 +341,35 @@
                         
                         switch (id_seccion) {
                             case '1':                            
-                                ca++;
+                                
                                 sumaparcial = $('#sumcarnes').val();
                                 $('#sumcarnes').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
                             case '2':
-                                po++;
+                                
                                 console.log('dos '+ id_seccion );
                                 sumaparcial = $('#sumpollos').val();
                                 $('#sumpollos').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
                             case '3':
-                                tu++;
+                                
                                 console.log('tres '+ id_seccion );                            
-                                sumaparcial = $('#sumtuberculos').val();
-                                $('#sumtuberculos').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
+                                sumaparcial = $('#sumverduras').val();
+                                $('#sumverduras').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                break;
 
                             case '4':
-                            ve++;
-                            console.log('cuatro '+ id_seccion );
-                                sumaparcial = $('#sumfrutas').val();
-                                $('#sumfrutas').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
+               
+                                console.log('cuatro '+ id_seccion );
+                                sumaparcial = $('#sumtuberculos').val();
+                                $('#sumtuberculos').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                 break;
 
                             case '5':
-                            fr++;
-                            console.log('cinco '+ id_seccion );
-                                sumaparcial = $('#sumverduras').val();
-                                $('#sumverduras').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
+                            
+                                console.log('cinco '+ id_seccion );
+                                sumaparcial = $('#sumfrutas').val();
+                                $('#sumfrutas').val(redondeo2decimales(sumaparcial*1+datos['precioTotal']));
                                break;
 
                             default:
@@ -392,34 +399,30 @@
                  $('#sumcarnes').val(redondeo2decimales(subtot_redondeo));
                 break;
             case 2:
-            po++;
-            console.log('dos '+ id_seccion );
+            
                 sumaparcial =Number($('#sumpollos').val()*1);
                 subtot_redondeo = sumaparcial - numero;
                  $('#sumpollos').val(redondeo2decimales(subtot_redondeo));
                 break;
             case 3:
-            tu++;
-            console.log('tres '+ id_seccion );
-                sumaparcial =Number($('#sumtuberculos').val()*1);
-                subtot_redondeo = sumaparcial - numero;
-                 $('#sumtuberculos').val(redondeo2decimales(subtot_redondeo));
-               break;
-
-            case 4:
-            ve++;
-            console.log('cuatro '+ id_seccion );
-                sumaparcial =Number($('#sumfrutas').val()*1);
-                subtot_redondeo = sumaparcial - numero;
-                 $('#sumfrutas').val(redondeo2decimales(subtot_redondeo));
-                break;
-
-            case 5:
-            fr++;
-            console.log('cinco '+ id_seccion );
+            
                 sumaparcial =Number($('#sumverduras').val()*1);
                 subtot_redondeo = sumaparcial - numero;
                  $('#sumverduras').val(redondeo2decimales(subtot_redondeo));
+               break;
+
+            case 4:
+                
+                sumaparcial =Number($('#sumtuberculos').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumtuberculos').val(redondeo2decimales(subtot_redondeo));
+                break;
+
+            case 5:
+                
+                sumaparcial =Number($('#sumfrutas').val()*1);
+                subtot_redondeo = sumaparcial - numero;
+                 $('#sumfrutas').val(redondeo2decimales(subtot_redondeo));
                break;
 
             default:
